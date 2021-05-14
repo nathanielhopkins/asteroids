@@ -1,4 +1,4 @@
-let MovingObject = require("./moving_object.js");
+let MovingObject = require("./moving_object");
 window.MovingObject = MovingObject;
 
 document.addEventListener("DOMContentLoaded", function () {
