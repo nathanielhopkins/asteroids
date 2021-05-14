@@ -1,36 +1,42 @@
 let Asteroid = require('./asteroid');
 
-CONSTANTS = {
-  DIM_X: 1000,
-  DIM_Y: 600,
-  NUM_ASTEROIDS: 4
-}
 
 function Game () {
-  this.dim_x = CONSTANTS.DIM_X;
-  this.dim_y = CONSTANTS.DIM_Y;
-  this.num_asteroids = CONSTANTS.NUM_ASTEROIDS;
+  this.asteroids = [];
   this.addAsteroids();
 }
 
+Game.DIM_X = 1000;
+Game.DIM_Y = 600;
+Game.NUM_ASTEROIDS = 4;
+Game.BACKGROUND = 'black';
+
 Game.prototype.addAsteroids = function () {
-  this.asteroids = []
-  for(let i = 0;i<this.num_asteroids;i++) {
+  for(let i = 0;i<Game.NUM_ASTEROIDS;i++) {
     this.asteroids.push(new Asteroid(this.randomPosition()));
   }
 }
 
 Game.prototype.randomPosition = function () {
   let pos = [];
-  pos.push(Math.floor(Math.random() * this.dim_x));
-  pos.push(Math.floor(Math.random() * this.dim_y));
+  pos.push(Math.floor(Math.random() * Game.DIM_X));
+  pos.push(Math.floor(Math.random() * Game.DIM_Y));
   return pos;
 }
 
 Game.prototype.draw = function (ctx) {
-  ctx.clearRect();
+  ctx.clearRect(0,0,Game.DIM_X, Game.DIM_Y);
+  ctx.fillStyle = Game.BACKGROUND;
+  ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
+
   this.asteroids.forEach(asteroid => {
     asteroid.draw(ctx);
+  })
+}
+
+Game.prototype.moveObjects = function () {
+  this.asteroids.forEach(asteroid => {
+    asteroid.move();
   })
 }
 
