@@ -7,9 +7,10 @@ let DEFAULTS = {
   SPEED: 4
 }
 
-function Asteroid(pos) {
+function Asteroid(pos, game) {
   let options = {};
   options.pos = pos;
+  options.game = game;
   options.vel = Util.randomVec(DEFAULTS.SPEED);
   options.radius = DEFAULTS.RADIUS;
   options.color = DEFAULTS.COLOR;
