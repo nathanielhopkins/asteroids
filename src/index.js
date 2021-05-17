@@ -1,10 +1,6 @@
-let MovingObject = require("./moving_object");
-let Asteroid = require("./asteroid");
-let Util = require("./util");
 let Game = require("./game");
-window.Game = Game;
-window.Asteroid = Asteroid;
-window.MovingObject = MovingObject;
+let GameView = require("./game_view");
+
 
 document.addEventListener("DOMContentLoaded", function () {
   let canvasEl = document.getElementById("game-canvas");
@@ -12,5 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   canvasEl.height = Game.DIM_Y;
 
   let ctx = canvasEl.getContext('2d');
-  window.ctx = ctx;
+  let gv = new GameView(new Game(), ctx);
+  gv.start();
 });

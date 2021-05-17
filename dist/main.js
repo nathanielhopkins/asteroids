@@ -15,7 +15,7 @@
   \*************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\nconst MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n\nlet DEFAULTS = {\n  COLOR: 'gray',\n  RADIUS: 20,\n  SPEED: 4\n}\n\nfunction Asteroid(pos) {\n  let options = {};\n  options.pos = pos;\n  options.vel = Util.randomVec(DEFAULTS.SPEED);\n  options.radius = DEFAULTS.RADIUS;\n  options.color = DEFAULTS.COLOR;\n\n  MovingObject.call(this, options)\n}\n\nUtil.inherits(Asteroid, MovingObject);\n\nmodule.exports = Asteroid;\n\n//# sourceURL=webpack:///./src/asteroid.js?");
+eval("const Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\nconst MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n\nlet DEFAULTS = {\n  COLOR: 'gray',\n  RADIUS: 25,\n  SPEED: 4\n}\n\nfunction Asteroid(pos) {\n  let options = {};\n  options.pos = pos;\n  options.vel = Util.randomVec(DEFAULTS.SPEED);\n  options.radius = DEFAULTS.RADIUS;\n  options.color = DEFAULTS.COLOR;\n\n  MovingObject.call(this, options)\n}\n\nUtil.inherits(Asteroid, MovingObject);\n\nmodule.exports = Asteroid;\n\n//# sourceURL=webpack:///./src/asteroid.js?");
 
 /***/ }),
 
@@ -29,13 +29,23 @@ eval("let Asteroid = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\"
 
 /***/ }),
 
+/***/ "./src/game_view.js":
+/*!**************************!*\
+  !*** ./src/game_view.js ***!
+  \**************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("let Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\n\nfunction GameView (game, ctx) {\n  this.game = game;\n  this.ctx = ctx;\n};\n\nGameView.prototype.start = function () {\n  setInterval(() => {\n    this.game.moveObjects();\n    this.game.draw(this.ctx);\n  }, 20);\n};\n\nmodule.exports = GameView;\n\n//# sourceURL=webpack:///./src/game_view.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("let MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\nlet Asteroid = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\");\nlet Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\nlet Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\nwindow.Game = Game;\nwindow.Asteroid = Asteroid;\nwindow.MovingObject = MovingObject;\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  let canvasEl = document.getElementById(\"game-canvas\");\n  canvasEl.width = Game.DIM_X;\n  canvasEl.height = Game.DIM_Y;\n\n  let ctx = canvasEl.getContext('2d');\n  window.ctx = ctx;\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("let Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\nlet GameView = __webpack_require__(/*! ./game_view */ \"./src/game_view.js\");\n\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  let canvasEl = document.getElementById(\"game-canvas\");\n  canvasEl.width = Game.DIM_X;\n  canvasEl.height = Game.DIM_Y;\n\n  let ctx = canvasEl.getContext('2d');\n  let gv = new GameView(new Game(), ctx);\n  gv.start();\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
