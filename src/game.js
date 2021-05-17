@@ -13,7 +13,7 @@ Game.BACKGROUND = 'black';
 
 Game.prototype.addAsteroids = function () {
   for(let i = 0;i<Game.NUM_ASTEROIDS;i++) {
-    this.asteroids.push(new Asteroid(this.randomPosition()));
+    this.asteroids.push(new Asteroid(this.randomPosition(), this));
   }
 }
 
@@ -46,7 +46,7 @@ Game.prototype.wrap = function (pos) {
   } else if(pos[0] > Game.DIM_X) {
     pos[0] = 0;
   } 
-  
+
   if(pos[1] < 0) {
     pos[1] = Game.DIM_Y;
   } else if(pos[1] > Game.DIM_Y) {
