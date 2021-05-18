@@ -70,4 +70,11 @@ Game.prototype.step = function () {
   this.checkCollisions();
 }
 
+Game.prototype.remove = function (asteroid) {
+  let newArr = this.asteroids.filter(function(value,index,array){
+    return value != asteroid;
+  });
+  this.asteroids = newArr;
+}
+
 module.exports = Game;
