@@ -65,4 +65,9 @@ Game.prototype.checkCollisions = function () {
   }
 }
 
+Game.prototype.step = function () {
+  this.moveObjects();
+  this.checkCollisions();
+}
+
 module.exports = Game;
