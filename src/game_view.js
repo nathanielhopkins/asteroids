@@ -24,6 +24,7 @@ GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
 };
 
 GameView.prototype.start = function () {
+  this.bindKeyHandlers();
   setInterval(() => {
     this.game.step();
     this.game.draw(this.ctx);
