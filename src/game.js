@@ -46,8 +46,9 @@ Game.prototype.draw = function (ctx) {
 }
 
 Game.prototype.moveObjects = function () {
-  this.asteroids.forEach(asteroid => {
-    asteroid.move();
+  let objects = this.allObjects();
+  objects.forEach(object => {
+    object.move();
   })
 }
 
