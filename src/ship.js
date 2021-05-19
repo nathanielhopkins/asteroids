@@ -3,7 +3,7 @@ const MovingObject = require("./moving_object");
 
 let DEFAULTS = {
   COLOR: 'lightgreen',
-  RADIUS: 10,
+  RADIUS: 15,
 }
 
 function Ship(pos, game){
