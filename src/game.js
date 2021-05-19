@@ -13,6 +13,14 @@ Game.DIM_Y = 600;
 Game.NUM_ASTEROIDS = 4;
 Game.BACKGROUND = 'black';
 
+Game.prototype.allObjects = function () {
+  let objects = [];
+  objects.push(this.ship);
+  this.asteroids.forEach(asteroid => objects.push(asteroid));
+  return objects;
+}
+
+
 Game.prototype.addAsteroids = function () {
   for(let i = 0;i<Game.NUM_ASTEROIDS;i++) {
     this.asteroids.push(new Asteroid(this.randomPosition(), this));
