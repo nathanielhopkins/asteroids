@@ -38,9 +38,10 @@ Game.prototype.draw = function (ctx) {
   ctx.clearRect(0,0,Game.DIM_X, Game.DIM_Y);
   ctx.fillStyle = Game.BACKGROUND;
   ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
-
-  this.asteroids.forEach(asteroid => {
-    asteroid.draw(ctx);
+  
+  let objects = this.allObjects();
+  objects.forEach(object => {
+    object.draw(ctx);
   })
 }
 
