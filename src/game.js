@@ -1,7 +1,9 @@
 let Asteroid = require('./asteroid');
+let Ship = require('./ship');
 
 
 function Game () {
+  this.ship = new Ship(this.randomPosition(), this);
   this.asteroids = [];
   this.addAsteroids();
 }
