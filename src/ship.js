@@ -10,7 +10,7 @@ function Ship(pos, game){
   let options = {};
   options.pos = pos;
   options.game = game;
-  options.vel = 0;
+  options.vel = [0,0];
   options.radius = DEFAULTS.RADIUS;
   options.color = DEFAULTS.COLOR;
 
