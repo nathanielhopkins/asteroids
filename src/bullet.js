@@ -4,7 +4,7 @@ const MovingObject = require("./moving_object");
 let DEFAULTS = {
   COLOR: 'lightgreen',
   RADIUS: 5,
-  SPEED: 4
+  SPEED: 10
 }
 
 function Bullet (ship) {
