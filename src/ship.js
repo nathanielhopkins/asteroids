@@ -30,8 +30,10 @@ Ship.prototype.power = function (impulse) {
 }
 
 Ship.prototype.fireBullet = function () {
-  let bullet = new Bullet(this);
-  this.game.add(bullet);
+  if (!(this.vel[0] === 0 && this.vel[1] === 0)){
+    let bullet = new Bullet(this);
+    this.game.add(bullet);
+  }
 }
 
 module.exports = Ship;
