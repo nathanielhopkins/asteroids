@@ -1,5 +1,6 @@
 const Util = require("./util");
 const MovingObject = require("./moving_object");
+const Bullet = require("./bullet");
 
 let DEFAULTS = {
   COLOR: 'lightgreen',
@@ -26,6 +27,11 @@ Ship.prototype.relocate = function () {
 Ship.prototype.power = function (impulse) {
   this.vel[0] += impulse[0];
   this.vel[1] += impulse[1];
+}
+
+Ship.prototype.fireBullet = function () {
+  let bullet = new Bullet(this);
+  this.game.add(bullet);
 }
 
 module.exports = Ship;
