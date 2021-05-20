@@ -1,10 +1,12 @@
 let Asteroid = require('./asteroid');
 let Ship = require('./ship');
+let Bullet = require('./bullet')
 
 
 function Game () {
   this.ship = new Ship(this.randomPosition(), this);
   this.asteroids = [];
+  this.bullets = [];
   this.addAsteroids();
 }
 
@@ -17,6 +19,7 @@ Game.prototype.allObjects = function () {
   let objects = [];
   objects.push(this.ship);
   this.asteroids.forEach(asteroid => objects.push(asteroid));
+  this.bullets.forEach(bullet => objects.push(bullet));
   return objects;
 }
 
@@ -88,11 +91,26 @@ Game.prototype.step = function () {
   this.checkCollisions();
 }
 
-Game.prototype.remove = function (asteroid) {
-  let newArr = this.asteroids.filter(function(value,index,array){
-    return value != asteroid;
-  });
-  this.asteroids = newArr;
+Game.prototype.remove = function (object) {
+  if(object instanceof Asteroid){
+    let newAst = this.asteroids.filter(function(value,index,array){
+      return value != object;
+    });
+    this.asteroids = newAst;
+  } else if(object instanceof Bullet){
+    let newBul = this.bullets.filter(function (value, index, array) {
+      return value != object;
+    });
+    this.bullets = newBul;
+  }
+}
+
+Game.prototype.add = function (object) {
+  if(object instanceof Asteroid) {
+    this.asteroids.push(object);
+  } else if (object instanceof Bullet) {
+    this.bullets.push(object);
+  }
 }
 
 module.exports = Game;
