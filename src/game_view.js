@@ -20,7 +20,7 @@ GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
     key(k, function () { ship.power(move); });
   });
 
-  // key("space", function () { ship.fireBullet(); });
+  key("space", function () { ship.fireBullet(); });
 };
 
 GameView.prototype.start = function () {
