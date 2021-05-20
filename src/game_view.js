@@ -13,7 +13,7 @@ GameView.MOVES = {
 };
 
 GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
-  const ship = this.ship;
+  const ship = this.game.ship;
 
   Object.keys(GameView.MOVES).forEach(function (k) {
     const move = GameView.MOVES[k];
