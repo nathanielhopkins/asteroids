@@ -4,12 +4,13 @@ const MovingObject = require("./moving_object");
 let DEFAULTS = {
   COLOR: 'lightgreen',
   RADIUS: 5,
+  SPEED: 4
 }
 
 function Bullet (ship) {
   let options = {};
-  options.pos = ship.pos;
-  options.vel = ship.vel;
+  options.pos = JSON.parse(JSON.stringify(ship.pos));
+  options.vel = Util.scale(ship.vel, DEFAULTS.SPEED);
   options.radius = DEFAULTS.RADIUS;
   options.color = DEFAULTS.COLOR;
   options.game = ship.game;
