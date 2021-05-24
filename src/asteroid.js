@@ -1,6 +1,7 @@
 const Util = require("./util");
 const MovingObject = require("./moving_object");
 const Ship = require("./ship");
+const Bullet = require("./bullet")
 
 let DEFAULTS = {
   COLOR: 'gray',
@@ -24,6 +25,9 @@ Util.inherits(Asteroid, MovingObject);
 Asteroid.prototype.collideWith = function (otherObject) {
   if(otherObject instanceof Ship) {
     otherObject.relocate();
+  } else if (otherObject instanceof Bullet) {
+    this.game.remove(this);
+    this.game.remove(otherObject);
   }
 }
 
