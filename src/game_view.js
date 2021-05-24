@@ -26,10 +26,16 @@ GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
 
 GameView.prototype.start = function () {
   this.bindKeyHandlers();
-  setInterval(() => {
-    this.game.step();
-    this.game.draw(this.ctx);
-  }, 20);
+  requestAnimationFrame(this.animate.bind(this));
 };
+
+GameView.prototype.animate = function (time) {
+  let delta = time - this.lastTime;
+  this.game.step(delta);
+  this.game.draw(this.ctx);
+  this.lastTime = time;
+
+  requestAnimationFrame(this.animate.bind(this));
+}
 
 module.exports = GameView;
