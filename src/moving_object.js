@@ -13,7 +13,7 @@ MovingObject.prototype.draw = function(ctx) {
   ctx.fill();
 }
 
-MovingObject.prototype.move = function(timeDelta)) {
+MovingObject.prototype.move = function(timeDelta) {
   let delta = timeDelta || 1;
   this.pos[0] += this.vel[0] * delta;
   this.pos[1] += this.vel[1] * delta;

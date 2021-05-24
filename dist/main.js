@@ -63,9 +63,9 @@ eval("let Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\nlet Game
 /*!******************************!*\
   !*** ./src/moving_object.js ***!
   \******************************/
-/***/ (() => {
+/***/ ((module) => {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (16:49)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n| }\\n| \\n> MovingObject.prototype.move = function(timeDelta)) {\\n|   let delta = timeDelta || 1;\\n|   this.pos[0] += this.vel[0] * delta;\");\n\n//# sourceURL=webpack:///./src/moving_object.js?");
+eval("function MovingObject(options) {\n  this.pos = options.pos;\n  this.vel = options.vel;\n  this.radius = options.radius;\n  this.color = options.color;\n  this.game = options.game;\n}\n\nMovingObject.prototype.draw = function(ctx) {\n  ctx.fillStyle = this.color;\n  ctx.beginPath();\n  ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true);\n  ctx.fill();\n}\n\nMovingObject.prototype.move = function(timeDelta) {\n  let delta = timeDelta || 1;\n  this.pos[0] += this.vel[0] * delta;\n  this.pos[1] += this.vel[1] * delta;\n  if(this.game.isOutOfBounds(this.pos)) {\n    if(this.isWrappable === true) {\n      this.pos = this.game.wrap(this.pos);\n    } else {\n      this.game.remove(this);\n    }\n  }\n}\n\nMovingObject.prototype.isCollidedWith = function (otherObject) {\n  let distance = Math.sqrt((this.pos[0] - otherObject.pos[0]) ** 2 + (this.pos[1] - otherObject.pos[1]) ** 2)\n  let sumRad = this.radius + otherObject.radius;\n  return distance < sumRad;\n}\n\nMovingObject.prototype.collideWith = function (otherObject) {\n  // this is now empty; overwritten by Asteroid.prototype.collideWith\n}\n\nMovingObject.prototype.isWrappable = true;\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack:///./src/moving_object.js?");
 
 /***/ }),
 
