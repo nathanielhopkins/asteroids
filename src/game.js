@@ -12,7 +12,7 @@ function Game () {
 
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;
-Game.NUM_ASTEROIDS = 4;
+Game.NUM_ASTEROIDS = 10;
 Game.BACKGROUND = 'black';
 
 Game.prototype.allObjects = function () {
