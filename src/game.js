@@ -115,9 +115,9 @@ Game.prototype.add = function (object) {
 
 Game.prototype.isOutOfBounds = function (pos) {
   let out = false;
-  if(pos[0] > DIM_X || pos[0] < 0) {
+  if(pos[0] > Game.DIM_X || pos[0] < 0) {
     out = true;
-  } else if(pos[1] > DIM_Y || pos[1] < 0) {
+  } else if(pos[1] > Game.DIM_Y || pos[1] < 0) {
     out = true;
   }
   return out;
