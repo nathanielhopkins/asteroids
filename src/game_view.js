@@ -3,6 +3,7 @@ let Game = require("./game");
 function GameView (game, ctx) {
   this.game = game;
   this.ctx = ctx;
+  this.lastTime = 0;
 };
 
 GameView.MOVES = {
