@@ -48,10 +48,10 @@ Game.prototype.draw = function (ctx) {
   })
 }
 
-Game.prototype.moveObjects = function () {
+Game.prototype.moveObjects = function (delta) {
   let objects = this.allObjects();
   objects.forEach(object => {
-    object.move();
+    object.move(delta);
   })
 }
 
