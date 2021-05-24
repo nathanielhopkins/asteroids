@@ -25,7 +25,7 @@ eval("const Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\nconst 
   \***********************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\nconst MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n\nlet DEFAULTS = {\n  COLOR: 'lightgreen',\n  RADIUS: 5,\n  SPEED: 10\n}\n\nfunction Bullet (ship) {\n  let options = {};\n  options.pos = JSON.parse(JSON.stringify(ship.pos));\n  options.vel = Util.scale(ship.vel, DEFAULTS.SPEED);\n  options.radius = DEFAULTS.RADIUS;\n  options.color = DEFAULTS.COLOR;\n  options.game = ship.game;\n\n  MovingObject.call(this, options);\n}\n\nUtil.inherits(Bullet, MovingObject);\n\nBullet.prototype.isWrappable = false;\n\nmodule.exports = Bullet;\n\n//# sourceURL=webpack:///./src/bullet.js?");
+eval("const Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\nconst MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n\nlet DEFAULTS = {\n  COLOR: 'lightgreen',\n  RADIUS: 2.5,\n  SPEED: 10\n}\n\nfunction Bullet (ship) {\n  let options = {};\n  options.pos = JSON.parse(JSON.stringify(ship.pos));\n  options.vel = Util.scale(ship.vel, DEFAULTS.SPEED);\n  options.radius = DEFAULTS.RADIUS;\n  options.color = DEFAULTS.COLOR;\n  options.game = ship.game;\n\n  MovingObject.call(this, options);\n}\n\nUtil.inherits(Bullet, MovingObject);\n\nBullet.prototype.isWrappable = false;\n\nmodule.exports = Bullet;\n\n//# sourceURL=webpack:///./src/bullet.js?");
 
 /***/ }),
 

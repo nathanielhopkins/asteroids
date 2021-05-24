@@ -3,7 +3,7 @@ const MovingObject = require("./moving_object");
 
 let DEFAULTS = {
   COLOR: 'lightgreen',
-  RADIUS: 5,
+  RADIUS: 2.5,
   SPEED: 10
 }
 
