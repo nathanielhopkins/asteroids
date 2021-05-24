@@ -20,4 +20,6 @@ function Bullet (ship) {
 
 Util.inherits(Bullet, MovingObject);
 
+Bullet.prototype.isWrappable = false;
+
 module.exports = Bullet;

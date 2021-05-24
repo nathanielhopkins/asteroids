@@ -29,4 +29,6 @@ MovingObject.prototype.collideWith = function (otherObject) {
   // this is now empty; overwritten by Asteroid.prototype.collideWith
 }
 
+MovingObject.prototype.isWrappable = true;
+
 module.exports = MovingObject;
